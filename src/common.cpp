@@ -89,7 +89,6 @@
 // OSX has arc4random_buf
 #define HAS_ARC4RANDOM_BUF 1
 #endif
-
 FILE* shim::freopen64(const char* filename, const char* mode, FILE* stream) {
     return ::freopen(filename, mode, stream);
 }
