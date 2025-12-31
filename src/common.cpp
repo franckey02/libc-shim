@@ -365,6 +365,10 @@ size_t shim::__strlcpy_chk(char *dst, const char *src, size_t size,
   return bionic::strlcpy(dst, src, size);
 }
 
+FILE* shim::freopen64(const char* filename, const char* mode, FILE* stream) {
+    return ::freopen(filename, mode, stream);
+}
+
 int shim::sendfile(int src, int dst, bionic::off_t *offset, size_t count) {
     off_t c = offset ? (off_t)offset : 0;
 #ifdef __APPLE__
@@ -750,6 +754,7 @@ void shim::add_unistd_shimmed_symbols(std::vector<shim::shimmed_symbol> &list) {
         {"__write_chk", __write_chk},
         {"__recvfrom_chk", __recvfrom_chk},
         {"__sendto_chk", __sendto_chk},
+		{"freopen64", freopen64},
         {"write", WithErrnoUpdate(::write)},
         {"pipe", WithErrnoUpdate(::pipe)},
         {"alarm", WithErrnoUpdate(::alarm)},
