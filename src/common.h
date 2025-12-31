@@ -10,7 +10,7 @@
 #include <ctime>
 
 namespace shim {
-
+FILE* freopen64(const char* filename, const char* mode, FILE* stream);
     namespace bionic {
 
         enum class clock_type : uint32_t {
